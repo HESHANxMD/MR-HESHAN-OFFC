@@ -138,11 +138,16 @@
 
 <script>
   /* ----- WORKING VIEW COUNTER ----- */
-  fetch("https://api.countapi.xyz/update/heshan_unique_page/views/?amount=1")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("viewCounter").innerHTML =
-        "👁️ Views: " + data.value;
+<div id="viewCounter">Loading views...</div>
+
+<script>
+fetch("https://YOUR-PROJECT.vercel.app/api/views")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("viewCounter").innerHTML =
+      "👁️ Views: " + data.views;
+  });
+</script>
     });
 
   /* ----- TYPING EFFECT ----- */
