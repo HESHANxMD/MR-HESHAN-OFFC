@@ -128,7 +128,7 @@
       <a href="https://vt.tiktok.com/ZSyEs3qbT/" class="btn">TikTok</a>
     </div>
 
-    <!-- Views -->
+    <!-- Views Counter -->
     <div id="viewCounter">Loading views...</div>
 
   </div>
@@ -137,18 +137,19 @@
 </div>
 
 <script>
-  /* ----- WORKING VIEW COUNTER ----- */
-<div id="viewCounter">Loading views...</div>
+  /* ----- LOCALSTORAGE VISITOR COUNTER ----- */
+  let count = localStorage.getItem("heshan_profile_views");
 
-<script>
-fetch("https://YOUR-PROJECT.vercel.app/api/views")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("viewCounter").innerHTML =
-      "👁️ Views: " + data.views;
-  });
-</script>
-    });
+  if (count === null) {
+    count = 1;
+  } else {
+    count = parseInt(count) + 1;
+  }
+
+  localStorage.setItem("heshan_profile_views", count);
+
+  document.getElementById("viewCounter").innerHTML =
+    "👁️ Views: " + count;
 
   /* ----- TYPING EFFECT ----- */
   const lines = [
